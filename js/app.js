@@ -10,12 +10,13 @@ let imgOne = document.getElementById('imgOne');
 let imgTwo = document.getElementById('imgTwo');
 let imgThree = document.getElementById('imgThree');
 
+let stopButtom = document.getElementById('stopButton');
+
+let resultDiv = document.getElementById('result');
+
 let contTimeShow = 0;
 
 let maxTimeShow = 25;
-
-// console.log(imgProductSection);
-
 
 function Product(imgName, imgSrc) {
     this.productName = imgName;
@@ -42,20 +43,25 @@ function setElemntToVariable() {
     imgTwo.src = 'img/' + Product.productObjects[imgTwoRandom].imgPath;
     imgThree.src = 'img/' + Product.productObjects[imgTreeRandom].imgPath;
 
-    
-    // console.log(Product.productObjects[imgOneRandom].timeShowImg);
+
+    // console.log(Product.productObjects[0].timeShowImg);
     // console.log(productArray[imgOneRandom].timeShowImg);
 
     Product.productObjects[imgOneRandom].timeShowImg++;
     Product.productObjects[imgTwoRandom].timeShowImg++;
     Product.productObjects[imgTreeRandom].timeShowImg++;
 
-    // console.log(Product.productObjects)
 
-    // console.log(Product.productObjects[imgOneRandom].imgPath.split('.')[0]);
+    Product.productObjects[imgOneRandom].timeClick;
+    Product.productObjects[imgTwoRandom].timeClick;
+    Product.productObjects[imgTreeRandom].timeClick;
+
 
     // for (let i = 0; i < imgProductArray.length; i++){
+    //     console.log(Product.productObjects[i].productName);
     // }
+
+    // console.log(`banana had 3 votes, and was seen 5 times.`)
 
 
 }
@@ -68,19 +74,32 @@ setElemntToVariable();
 
 imgProductSection.addEventListener('click', changeImg);
 function changeImg(eventListener) {
-    if ((eventListener.target.id === 'imgOne' || eventListener.target.id === 'imgTwo' || eventListener.target.id === 'imgThree') && contTimeShow < maxTimeShow ) {
+    if ((eventListener.target.id === 'imgOne' || eventListener.target.id === 'imgTwo' || eventListener.target.id === 'imgThree') && contTimeShow < maxTimeShow) {
         setElemntToVariable();
         contTimeShow++;
+
+    } else if (contTimeShow >= maxTimeShow) {
+        for (let i = 0; i < imgProductArray.length; i++) {
+                // console.log(`banana had 3 votes, and was seen 5 times.`)
+                // console.log(`banana had 3 votes, and was seen 5 times.`)
+            let resultUl = document.createElement('ul');
+            resultDiv.appendChild(resultUl);
+            let resultLi = document.createElement('li');
+            resultUl.appendChild(resultLi);
+            resultLi.textContent = `${Product.productObjects[i].productName} had ${Product.productObjects[i].timeShowImg} votes, and was seen ${Product.productObjects[i].timeClick} times.`;
+            // console.log(Product.productObjects[i].timeClick);
+        }
     }
 }
 
+
+
 // console.log(contTimeShow);
 
-let stopButtom = document.getElementById('stopButton');
 
 function removeHandler() {
     document.getElementById("imgProductSection").removeEventListener("click", changeImg);
-  }
+}
 
 
 function getRandomImgIndex(min, max) {
