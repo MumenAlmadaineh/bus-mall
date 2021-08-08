@@ -1,0 +1,31 @@
+body{
+    width: 901px;
+      display: grid;
+      margin: auto;
+  }
+
+.imgProduct{
+    display: grid;
+    grid-template-columns: auto auto auto;
+}
+
+p {
+    text-align: center;
+    margin: 35px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: xx-large;
+    font-weight: bold;
+    color: darkslateblue;
+}
+
+img{
+    margin: 0 15px;
+    object-fit: cover;
+    width: 300px;
+    height: 100%;
+}
+
+button{
+    margin-left: 233px;
+    margin-top: 64px;
+}
