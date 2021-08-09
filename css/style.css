@@ -46,3 +46,7 @@ ul li{
   float: left;
   width: 10em;
 }
+
+canvas{
+    margin: 75px 5px;
+}
