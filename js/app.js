@@ -61,15 +61,6 @@ function setElemntToVariable() {
     Product.productObjects[imgOneRandom].timeShowImg++;
     Product.productObjects[imgTwoRandom].timeShowImg++;
     Product.productObjects[imgThreeRandom].timeShowImg++;
-
-
-    // Product.productObjects[imgOneRandom].timeClick;
-    // Product.productObjects[imgTwoRandom].timeClick;
-    // Product.productObjects[imgThreeRandom].timeClick;
-
-    // console.log(`banana had 3 votes, and was seen 5 times.`)
-
-
 }
 setElemntToVariable();
 imgProductSection.addEventListener('click', changeImg);
@@ -99,16 +90,6 @@ function changeImg(eventListener) {
             resultLi.textContent = `${Product.productObjects[i].productName} had ${Product.productObjects[i].timeClick} votes, and was seen ${Product.productObjects[i].timeShowImg} times.`;
         }
     }
-    // else if (contTimeShow >= maxTimeShow) {
-    //     for (let i = 0; i < imgProductArray.length; i++) {
-    //         let resultUl = document.createElement('ul');
-    //         resultDiv.appendChild(resultUl);
-    //         let resultLi = document.createElement('li');
-    //         resultUl.appendChild(resultLi);
-    //         resultLi.textContent = `${Product.productObjects[i].productName} had ${Product.productObjects[i].timeClick} votes, and was seen ${Product.productObjects[i].timeShowImg} times.`;
-    //     }
-    // }
-
     if (contTimeShow >= maxTimeShow) {
         resultChart();
         resultChartPie();
@@ -136,7 +117,6 @@ function removeHandler() {
 function getRandomImgIndex(min, max) {
     return Math.floor(Math.random() * (max - min + 1) + min);
 }
-// resultChart();
 
 function resultChart() {
 
@@ -191,16 +171,6 @@ function resultChart() {
 
 
 function resultChartPie() {
-
-
-
-    // for(let i = 0; i < Product.productObjects.length; i++){
-        
-    //     namesArray.push(Product.productObjects[i].productName);
-    //     shownArray.push(Product.productObjects[i].timeShowImg);
-    //     clickArray.push(Product.productObjects[i].timeClick);
-    // }
-
     let ctx = document.getElementById('htmlElentChartPie').getContext('2d');
     let chartOfresult = new Chart(ctx, {
         type: 'pie',
