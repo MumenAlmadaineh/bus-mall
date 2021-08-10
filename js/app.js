@@ -28,20 +28,17 @@ let imgThreeRandom = 0;
 
 let maxTimeShow = 25;
 
-function Product(imgName, imgSrc) {
+function Product(imgName, imgSrc, show = 0, click = 0) {
     this.productName = imgName;
     this.imgPath = imgSrc;
-    this.timeShowImg = 0;
-    this.timeClick = 0;
+    this.timeShowImg = show;
+    this.timeClick = click;
     Product.productObjects.push(this);
 }
 
 Product.productObjects = [];
 
-
-for (let i = 0; i < imgProductArray.length; i++) {
-    new Product(imgProductArray[i].split('.')[0], imgProductArray[i]);
-}
+getData ();
 
 
 function setElemntToVariable() {
@@ -61,8 +58,13 @@ function setElemntToVariable() {
     Product.productObjects[imgOneRandom].timeShowImg++;
     Product.productObjects[imgTwoRandom].timeShowImg++;
     Product.productObjects[imgThreeRandom].timeShowImg++;
+
+    localStorage.data = JSON.stringify(Product.productObjects);
+    console.log(Product.productObjects)
+
 }
 setElemntToVariable();
+
 imgProductSection.addEventListener('click', changeImg);
 function changeImg(eventListener) {
     if ((eventListener.target.id === 'imgOne' || eventListener.target.id === 'imgTwo' || eventListener.target.id === 'imgThree') && contTimeShow < maxTimeShow) {
@@ -96,6 +98,10 @@ function changeImg(eventListener) {
     }
 }
 
+Product.prototype.getProduct = function() {
+    console.log('prototype');
+}
+
 stopButton.addEventListener('click', stopAndShowResult);
 
 function stopAndShowResult() {
@@ -117,6 +123,7 @@ function removeHandler() {
 function getRandomImgIndex(min, max) {
     return Math.floor(Math.random() * (max - min + 1) + min);
 }
+
 
 function resultChart() {
 
@@ -229,4 +236,19 @@ function resultChartPie() {
             }
         }
     });
+}
+
+
+function getData (){
+    if (localStorage.data){
+        let data = JSON.parse(localStorage.data);
+        for (let i = 0; i < data.length; i++) {
+            new Product(data[i].productName, data[i].imgPath, data[i].timeShowImg, data[i].timeClick);
+        }
+        console.log(data);
+    } else{
+        for (let i = 0; i < imgProductArray.length; i++) {
+            new Product(imgProductArray[i].split('.')[0], imgProductArray[i]);
+        }
+    }
 }
