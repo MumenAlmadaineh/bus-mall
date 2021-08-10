@@ -83,15 +83,17 @@ function changeImg(eventListener) {
         setElemntToVariable();
         contTimeShow++;
 
-    } else if (contTimeShow >= maxTimeShow) {
-        for (let i = 0; i < imgProductArray.length; i++) {
-            let resultUl = document.createElement('ul');
-            resultDiv.appendChild(resultUl);
-            let resultLi = document.createElement('li');
-            resultUl.appendChild(resultLi);
-            resultLi.textContent = `${Product.productObjects[i].productName} had ${Product.productObjects[i].timeClick} votes, and was seen ${Product.productObjects[i].timeShowImg} times.`;
-        }
-    }
+    } 
+    // to show result in ul dirctly after 25 choose but it's not working file with local storage
+    // else if (contTimeShow >= maxTimeShow) {
+    //     for (let i = 0; i < imgProductArray.length; i++) {
+    //         let resultUl = document.createElement('ul');
+    //         resultDiv.appendChild(resultUl);
+    //         let resultLi = document.createElement('li');
+    //         resultUl.appendChild(resultLi);
+    //         resultLi.textContent = `${Product.productObjects[i].productName} had ${Product.productObjects[i].timeClick} votes, and was seen ${Product.productObjects[i].timeShowImg} times.`;
+    //     }
+    // }
     if (contTimeShow >= maxTimeShow) {
         resultChart();
         resultChartPie();
